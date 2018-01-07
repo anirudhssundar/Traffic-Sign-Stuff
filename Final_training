@@ -1,0 +1,17 @@
+Once roundabout.py has been run we need to start training the classifier
+
+First do this in the terminal:
+
+opencv_createsamples -info info/info.lst -num 1950 -w 20 -h 20 -vec positives.vec
+
+
+Creates a .vec file with the positive images 
+
+Make a directory called data
+(mkdir data)
+Then run:
+
+opencv_traincascade -data data -vec positives.vec -bg bg.txt -numPos 1800 -numNeg 900 -numStages 10 -w 20 -h 20
+
+This produces the final xml file
+Running through more stages takes more time but produces accurate results
