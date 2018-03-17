@@ -3,11 +3,18 @@ import cv2
 import os
 import shutil
 
+#Create a folder 'There' for storing images in which the sign is detected
+
+
+#The Classifier file
+
 thirty_cascade = cv2.CascadeClassifier('30_cascade-10stages.xml')
 
 #yield_cascade = cv2.CascadeClassifier('yieldsign12Stages.xml')
 
 #speed_cascade = cv2.CascadeClassifier('/home/anirudh/Documents/haar_xml_files/haarCascade_speed.xml')
+
+#Path to the test dataset
 
 path = "/home/anirudh/Documents/Real_test/workspace-30/Test/"
 newpath = "/home/anirudh/Documents/Real_test/workspace-30/there3/"
@@ -16,12 +23,12 @@ path_20 = "/home/anirudh/Documents/Real_test/workspace2/pos/"
 
 #img = cv2.imread('12614.ppm',1)
 
-dirs = sorted(os.listdir(newpath))
+dirs = sorted(os.listdir(path))
 for image in dirs:
 	#print(dirs)
 
 	#img = cv2.imread('12614.ppm',1)
-	img = cv2.imread(newpath + image,1)
+	img = cv2.imread(path + image,1)
 	gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 
 
@@ -37,7 +44,7 @@ for image in dirs:
 		print("n")
 		#shutil.move(path +image,"/home/anirudh/Documents/Real_test/workspace2/nope/"+ image)
 	else:
-		shutil.move(newpath +image,"/home/anirudh/Documents/Real_test/workspace-30/there2/"+ image)
+		shutil.move(path +image,"/home/anirudh/Documents/Real_test/workspace-30/there/"+ image)
 		#print("img = cv2.imread('12614.ppm',1)y")
 		#cv2.imshow('img',img)
 		#cv2.waitKey(0)
