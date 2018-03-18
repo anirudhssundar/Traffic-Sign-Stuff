@@ -45,10 +45,19 @@ def create_samples():
 			f.write(r.read())
 			r.close()
 	f.close()
-			
+	
+#Creates a vector file for the positive images	
+def posvec():
+	os.system("opencv_createsamples -info info/info.lst -num 3500 -w 20 -h 20 -vec positives.vec")			
 
-
-create_samples()
-#create_pos_neg()			
+#Start training the cascade	
+def train():
+	os.system("opencv_traincascade -data data -vec positives.vec -bg bg.txt -numPos 3000 -numNeg 1500 -numStages 10 -w 20 -h 20")
+	
+	
 #resize()
+#create_pos_neg()			
+#create_samples()
+posvec()
+train()
 
